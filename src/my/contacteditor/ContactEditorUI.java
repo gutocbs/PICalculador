@@ -269,11 +269,13 @@ public class ContactEditorUI extends javax.swing.JFrame {
         for (JTextField textField:textListVariaveis) {
             if(index < listaVariaveis.size()){
                 textField.setEnabled(true);
-                labelListVariaveis.get(index).setText(listaVariaveis.get(index));
+                if(labelListVariaveis.size() >= index)
+                    labelListVariaveis.get(index).setText(listaVariaveis.get(index));
             }
             else {
                 textField.setEnabled(false);
-                labelListVariaveis.get(index).setText("");
+                if(labelListVariaveis.size() >= index)
+                    labelListVariaveis.get(index).setText("");
             }
             index++;
         }
