@@ -6,10 +6,10 @@
 package my.contacteditor;
 
 import DTO.Materia;
-
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -33,6 +33,7 @@ public class ContactEditorUI extends javax.swing.JFrame {
     private ArrayList<JLabel> labelListVariaveis;
     private ArrayList<JRadioButton> materiaListRadioButtons;
     private ArrayList<JTextField> textListVariaveis;
+    private Pattern numberPattern = Pattern.compile("-?\\d+(\\.\\d+)?");
     // End of variables declaration//GEN-END:variables
 
     public ContactEditorUI(List<Materia> listaMaterias) {
@@ -201,7 +202,7 @@ public class ContactEditorUI extends javax.swing.JFrame {
 
     private void botaoCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         for (int i = 0; i < textListVariaveis.size(); i++) {
-            if(textListVariaveis.get(i).isEnabled() && (textListVariaveis.get(i).getText().isEmpty() || NumberUtils.isParsable(textListVariaveis.get(i).getText())))
+            if(textListVariaveis.get(i).isEnabled() && (textListVariaveis.get(i).getText().isEmpty() || !isNumeric(textListVariaveis.get(i).getText())))
                 textListVariaveis.get(i).setText("1");
         }
 
@@ -230,6 +231,12 @@ public class ContactEditorUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        return numberPattern.matcher(strNum).matches();
+    }
     private void setVariables(List<String> listaVariaveis){
         int index = 0;
         for (JTextField textField:textListVariaveis) {
