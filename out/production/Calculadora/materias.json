@@ -1,0 +1,24 @@
+{
+  "Materias": [
+    {
+      "nomeMateria": "Cinemática",
+      "textoMateria": "Esta simulação calcula a Velocidade Final com os dados da Velocidade Inicial, \nAceleração e o Tempo observado pela equação Vf = Vi + (a*t). \n\nNa caixa abaixo insira o valor da Velocidade Inicial, Aceleração e Tempo: ",
+      "variaveis": ["Vi", "a", "t"]
+    },
+    {
+      "nomeMateria": "Ondas",
+      "textoMateria": "Esta simulação calcula a Velocidade da onda com os dados do comprimento de onda\ne da frequêcia de onda \n\nA equação utilizada é V = y * f\nNa caixa abaixo insira o valor do comprimento de onda e frequência: ",
+      "variaveis": ["y","f"]
+    },
+    {
+      "nomeMateria": "Mola",
+      "textoMateria": "d",
+      "variaveis": ["y","f"]
+    },
+    {
+      "nomeMateria": "Eletricidade",
+      "textoMateria": "d",
+      "variaveis": ["y","f"]
+    }
+  ]
+}

@@ -5,6 +5,8 @@
  */
 package my.contacteditor;
 
+import DTO.Materia;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public class ContactEditorUI extends javax.swing.JFrame {
      * Creates new form ContactEditorUI
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    List<Materia> listaMaterias;
     private javax.swing.ButtonGroup botoesMaterias;
     private javax.swing.JButton botaoCalcular;
     private javax.swing.JLabel labelTituloTrabalho;
@@ -31,6 +34,7 @@ public class ContactEditorUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton materia2;
     private javax.swing.JRadioButton materia3;
     private javax.swing.JRadioButton materia4;
+    private ArrayList<JRadioButton> materiaListRadioButtons;
     private javax.swing.JScrollPane janela;
     private javax.swing.JTextArea textAreaExplicacao;
     private javax.swing.JTextField textFieldPrimeiraVariavel;
@@ -40,7 +44,8 @@ public class ContactEditorUI extends javax.swing.JFrame {
     private ArrayList<JTextField> textListVariaveis;
     // End of variables declaration//GEN-END:variables
 
-    public ContactEditorUI() {
+    public ContactEditorUI(List<Materia> listaMaterias) {
+        this.listaMaterias = listaMaterias;
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
@@ -59,6 +64,12 @@ public class ContactEditorUI extends javax.swing.JFrame {
         materia2 = new javax.swing.JRadioButton();
         materia3 = new javax.swing.JRadioButton();
         materia4 = new javax.swing.JRadioButton();
+        materiaListRadioButtons = new ArrayList<>();
+        materiaListRadioButtons.add(materia1);
+        materiaListRadioButtons.add(materia2);
+        materiaListRadioButtons.add(materia3);
+        materiaListRadioButtons.add(materia4);
+
         textFieldPrimeiraVariavel = new javax.swing.JTextField();
         textFieldSegundaVariavel = new javax.swing.JTextField();
         textFieldTerceiraVariavel = new javax.swing.JTextField();
@@ -105,7 +116,7 @@ public class ContactEditorUI extends javax.swing.JFrame {
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                                .addComponent(materia1)
+                                                                .addComponent(this.materiaListRadioButtons.get(0))
                                                                 .addGap(18, 18, 18)
                                                                 .addComponent(materia3)
                                                                 .addGap(18, 18, 18)
@@ -171,21 +182,13 @@ public class ContactEditorUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addPhysicsAreas(){
-        botoesMaterias.add(materia1);
-        materia1.setText("Cinemática");
-        materia1.addActionListener(evt -> materia1ActionPerformed(evt));
-
-        botoesMaterias.add(materia2);
-        materia2.setText("Mola");
-        materia2.addActionListener(evt -> materia2ActionPerformed(evt));
-
-        botoesMaterias.add(materia3);
-        materia3.setText("Onda");
-        materia3.addActionListener(evt -> materia3ActionPerformed(evt));
-
-        botoesMaterias.add(materia4);
-        materia4.setText("Eletricidade");
-        materia4.addActionListener(evt -> materia4ActionPerformed(evt));
+        int index = 0;
+        for (Materia materia:this.listaMaterias) {
+            materiaListRadioButtons.get(index).setText(materia.getNomeMateria());
+            int finalIndex = index;
+            materiaListRadioButtons.get(index).addActionListener(evt -> materiaActionPerformed(finalIndex));
+            botoesMaterias.add(materiaListRadioButtons.get(index++));
+        }
     }
 
     private void setBaseText(){
@@ -197,35 +200,11 @@ public class ContactEditorUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void materia4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void materiaActionPerformed(int indexMateria) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
-        labelPrimeiraVariavel.setText("Aqui abre a simulação de Eletricidade");
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
-
-    private void materia3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-        textAreaExplicacao.setText("Esta simulação calcula a Velocidade da onda com os dados do comprimento de onda\ne da frequêcia de onda \n\nA equação utilizada é V = y * f\nNa caixa abaixo insira o valor do comprimento de onda e frequência: ");
-        List<String> listaVariaveis = new ArrayList<>();
-        listaVariaveis.add("y");
-        listaVariaveis.add("f");
+        textAreaExplicacao.setText(this.listaMaterias.get(indexMateria).getTextoMateria());
+        List<String> listaVariaveis = this.listaMaterias.get(indexMateria).getVariaveis();
         setVariables(listaVariaveis);
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
-
-    private void materia2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-        labelPrimeiraVariavel.setText("Aqui abre a simulação de Mola");
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void materia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-
-        textAreaExplicacao.setText("Esta simulação calcula a Velocidade Final com os dados da Velocidade Inicial, \nAceleração e o Tempo observado pela equação Vf = Vi + (a*t). \n\nNa caixa abaixo insira o valor da Velocidade Inicial, Aceleração e Tempo: ");
-        List<String> listaVariaveis = new ArrayList<>();
-        listaVariaveis.add("Vi");
-        listaVariaveis.add("a");
-        listaVariaveis.add("t");
-        setVariables(listaVariaveis);
-
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void botaoCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

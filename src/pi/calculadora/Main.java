@@ -1,5 +1,6 @@
 package pi.calculadora;
 
+import files.fileReader;
 import my.contacteditor.ContactEditorUI;
 
 import java.util.ArrayList;
@@ -8,11 +9,14 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+        fileReader fileReader = new fileReader();
+
+
         setLookAndFeel();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ContactEditorUI().setVisible(true);
+                new ContactEditorUI(fileReader.getListaMaterias()).setVisible(true);
             }
         });
     }
