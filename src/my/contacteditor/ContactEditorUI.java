@@ -22,26 +22,16 @@ public class ContactEditorUI extends javax.swing.JFrame {
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private int numeroVariaveis = 3;
-    private List<Materia> listaMaterias;
-    private javax.swing.ButtonGroup botoesMaterias;
+    private javax.swing.JScrollPane janela;
     private javax.swing.JButton botaoCalcular;
     private javax.swing.JLabel labelTituloTrabalho;
     private javax.swing.JLabel labelEscolhas;
-    private javax.swing.JLabel labelPrimeiraVariavel;
-    private javax.swing.JLabel labelSegundaVariavel;
-    private javax.swing.JLabel labelTerceiraVariavel;
-    private ArrayList<JLabel> labelListVariaveis;
-    private javax.swing.JRadioButton materia1;
-    private javax.swing.JRadioButton materia2;
-    private javax.swing.JRadioButton materia3;
-    private javax.swing.JRadioButton materia4;
-    private ArrayList<JRadioButton> materiaListRadioButtons;
-    private javax.swing.JScrollPane janela;
     private javax.swing.JTextArea textAreaExplicacao;
-    private javax.swing.JTextField textFieldPrimeiraVariavel;
     private javax.swing.JTextField textFieldResultado;
-    private javax.swing.JTextField textFieldSegundaVariavel;
-    private javax.swing.JTextField textFieldTerceiraVariavel;
+    private javax.swing.ButtonGroup botoesMaterias;
+    private List<Materia> listaMaterias;
+    private ArrayList<JLabel> labelListVariaveis;
+    private ArrayList<JRadioButton> materiaListRadioButtons;
     private ArrayList<JTextField> textListVariaveis;
     // End of variables declaration//GEN-END:variables
 
@@ -58,6 +48,12 @@ public class ContactEditorUI extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     private void initComponents() {
+        loadGUI();
+        setBaseText();
+        addPhysicsAreas();
+    }// </editor-fold>//GEN-END:initComponents
+    private void loadGUI(){
+
         botoesMaterias = new javax.swing.ButtonGroup();
         labelTituloTrabalho = new javax.swing.JLabel();
         labelEscolhas = new javax.swing.JLabel();
@@ -78,31 +74,22 @@ public class ContactEditorUI extends javax.swing.JFrame {
         for (int i = 0; i < listaMaterias.size(); i++)
             materiaListRadioButtons.add(new javax.swing.JRadioButton());
 
-        setBaseText();
-        addPhysicsAreas();
-        textListVariaveis.get(0).addActionListener(evt -> jTextField1ActionPerformed(evt));
-
         botaoCalcular.setText("Calcular");
         botaoCalcular.addActionListener(evt -> botaoCalcularActionPerformed(evt));
-
-        textListVariaveis.get(1).addActionListener(evt -> jTextField3ActionPerformed(evt));
 
         textAreaExplicacao.setColumns(20);
         textAreaExplicacao.setRows(5);
         janela.setViewportView(textAreaExplicacao);
 
-
-        textListVariaveis.get(2).addActionListener(evt -> jTextField4ActionPerformed(evt));
-
-
+        setLayout();
+    }
+    private void setLayout(){
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         setLayoutHorizontalGroup(layout);
         setLayoutVerticalGroup(layout);
-
-
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
     private void setLayoutHorizontalGroup(GroupLayout layout){
         GroupLayout.SequentialGroup labelVariableTitleGroup = layout.createSequentialGroup();
@@ -150,38 +137,44 @@ public class ContactEditorUI extends javax.swing.JFrame {
     }
 
     private void setLayoutVerticalGroup(GroupLayout layout){
+        GroupLayout.ParallelGroup groupRadioVariaveis = layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(materiaListRadioButtons.get(0))
+                .addComponent(materiaListRadioButtons.get(1))
+                .addComponent(materiaListRadioButtons.get(2))
+                .addComponent(materiaListRadioButtons.get(3));
+
+        GroupLayout.ParallelGroup groupLabelVariaveis = layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(labelListVariaveis.get(0), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelListVariaveis.get(1), javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE);
+
+        GroupLayout.ParallelGroup arealabelvariaveis = layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(labelListVariaveis.get(2), javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addGroup(groupLabelVariaveis);
+        GroupLayout.ParallelGroup groupTextVariaveis = layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(textListVariaveis.get(0), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textListVariaveis.get(1), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textListVariaveis.get(2), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE);
+        GroupLayout.SequentialGroup groupJanela = layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(labelTituloTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelEscolhas)
+                .addGap(18, 18, 18)
+                .addGroup(groupRadioVariaveis)
+                .addGap(4, 4, 4)
+                .addComponent(janela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(arealabelvariaveis)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(groupTextVariaveis)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(botaoCalcular)
+                .addGap(18, 18, 18)
+                .addComponent(textFieldResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46);
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(labelTituloTrabalho, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(labelEscolhas)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(materiaListRadioButtons.get(0))
-                                        .addComponent(materiaListRadioButtons.get(1))
-                                        .addComponent(materiaListRadioButtons.get(2))
-                                        .addComponent(materiaListRadioButtons.get(3)))
-                                .addGap(4, 4, 4)
-                                .addComponent(janela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(45, 45, 45)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(labelListVariaveis.get(2), javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(labelListVariaveis.get(0), javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(labelListVariaveis.get(1), javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(textListVariaveis.get(0), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(textListVariaveis.get(1), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(textListVariaveis.get(2), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                                .addComponent(botaoCalcular)
-                                .addGap(18, 18, 18)
-                                .addComponent(textFieldResultado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46))
-        );
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(groupJanela));
     }
 
     private void addPhysicsAreas(){
@@ -199,10 +192,6 @@ public class ContactEditorUI extends javax.swing.JFrame {
         labelEscolhas.setText("Escolha as opções de simulação:");
     }
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void materiaActionPerformed(int indexMateria) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
         textAreaExplicacao.setText(this.listaMaterias.get(indexMateria).getTextoMateria());
@@ -211,9 +200,12 @@ public class ContactEditorUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void botaoCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        for (int i = 0; i < textListVariaveis.size(); i++) {
+            if(textListVariaveis.get(i).isEnabled() && (textListVariaveis.get(i).getText().isEmpty() || NumberUtils.isParsable(textListVariaveis.get(i).getText())))
+                textListVariaveis.get(i).setText("1");
+        }
 
-        if(materia1.isSelected()){
+        if(materiaListRadioButtons.get(0).isSelected()){
 
             String textAstring = textListVariaveis.get(0).getText();
             int textA = Integer.parseInt(textAstring);
@@ -225,7 +217,7 @@ public class ContactEditorUI extends javax.swing.JFrame {
             int v = textA+(textB*textC);
             textFieldResultado.setText(Integer.toString(v));
         }
-        if(materia3.isSelected()){
+        if(materiaListRadioButtons.get(1).isSelected()){
 
             String textAstring = textListVariaveis.get(0).getText();
             int textA = Integer.parseInt(textAstring);
@@ -237,14 +229,6 @@ public class ContactEditorUI extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void setVariables(List<String> listaVariaveis){
         int index = 0;
