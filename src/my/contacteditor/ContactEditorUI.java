@@ -114,6 +114,8 @@ public class ContactEditorUI extends javax.swing.JFrame {
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED);
         }
         GroupLayout.SequentialGroup radioVariables = layout.createSequentialGroup();
+
+        //Quero entender por que o limite é 3 aqui e não 4. Será que tem algo a ver com o tamanho máximo da janela?
         for (int i = 0; i < listaMaterias.size()-1; i++){
             radioVariables.addComponent(materiaListRadioButtons.get(i));
             if(i < listaMaterias.size() - 2)
