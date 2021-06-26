@@ -63,6 +63,7 @@ public class ContactEditorUI extends javax.swing.JFrame {
         botaoCalcular = new javax.swing.JButton();
         janela = new javax.swing.JScrollPane();
         textAreaExplicacao = new javax.swing.JTextArea();
+        textAreaExplicacao.setLineWrap(true);
 
         labelListVariaveis = new ArrayList<>();
         textListVariaveis = new ArrayList<>();
@@ -97,7 +98,7 @@ public class ContactEditorUI extends javax.swing.JFrame {
         GroupLayout.SequentialGroup textFieldGroup = layout.createSequentialGroup();
         for (int i = 0; i < numeroVariaveis; i++){
             labelVariableTitleGroup.addComponent(labelListVariaveis.get(i), javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED);
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED);
             textFieldGroup.addComponent(textListVariaveis.get(i), javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED);
         }
@@ -116,7 +117,7 @@ public class ContactEditorUI extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(materiaListRadioButtons.get(3));;
         GroupLayout.ParallelGroup variablesGroup = layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, labelVariableTitleGroup)
+                .addGroup(GroupLayout.Alignment.TRAILING, labelVariableTitleGroup)
                 .addGroup(textFieldGroup);
         GroupLayout.ParallelGroup areaVariaveis = layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                 .addComponent(janela, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,26 +208,33 @@ public class ContactEditorUI extends javax.swing.JFrame {
         }
 
         if(materiaListRadioButtons.get(0).isSelected()){
-
-            String textAstring = textListVariaveis.get(0).getText();
-            int textA = Integer.parseInt(textAstring);
-            String textBstring = textListVariaveis.get(1).getText();
-            int textB = Integer.parseInt(textBstring);
-            String textCstring = textListVariaveis.get(2).getText();
-            int textC = Integer.parseInt(textCstring);
+            int textA = Integer.parseInt(textListVariaveis.get(0).getText());
+            int textB = Integer.parseInt(textListVariaveis.get(1).getText());
+            int textC = Integer.parseInt(textListVariaveis.get(2).getText());
 
             int v = textA+(textB*textC);
             textFieldResultado.setText(Integer.toString(v));
         }
-        if(materiaListRadioButtons.get(1).isSelected()){
-
-            String textAstring = textListVariaveis.get(0).getText();
-            int textA = Integer.parseInt(textAstring);
-            String textBstring = textListVariaveis.get(1).getText();
-            int textB = Integer.parseInt(textBstring);
+        else if(materiaListRadioButtons.get(1).isSelected()){
+            int textA = Integer.parseInt(textListVariaveis.get(0).getText());
+            int textB = Integer.parseInt(textListVariaveis.get(1).getText());
 
             int vo = textA*textB;
             textFieldResultado.setText(Integer.toString(vo));
+        }
+        else if(materiaListRadioButtons.get(2).isSelected()){
+            int k = Integer.parseInt(textListVariaveis.get(0).getText());
+            int x = Integer.parseInt(textListVariaveis.get(1).getText());
+
+            int f = k*x;
+            textFieldResultado.setText(Integer.toString(f));
+        }
+        else if(materiaListRadioButtons.get(3).isSelected()){
+            int q = Integer.parseInt(textListVariaveis.get(0).getText());
+            int t = Integer.parseInt(textListVariaveis.get(1).getText());
+
+            int i = q/t;
+            textFieldResultado.setText(Integer.toString(i));
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

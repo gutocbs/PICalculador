@@ -1,24 +1,19 @@
 {
-  "Materias": [
-    {
-      "nomeMateria": "Cinemática",
-      "textoMateria": "Esta simulação calcula a Velocidade Final com os dados da Velocidade Inicial, \nAceleração e o Tempo observado pela equação Vf = Vi + (a*t). \n\nNa caixa abaixo insira o valor da Velocidade Inicial, Aceleração e Tempo: ",
-      "variaveis": ["Vi", "a", "t"]
-    },
-    {
-      "nomeMateria": "Ondas",
-      "textoMateria": "Esta simulação calcula a Velocidade da onda com os dados do comprimento de onda\ne da frequêcia de onda \n\nA equação utilizada é V = y * f\nNa caixa abaixo insira o valor do comprimento de onda e frequência: ",
-      "variaveis": ["y","f"]
-    },
-    {
-      "nomeMateria": "Mola",
-      "textoMateria": "d",
-      "variaveis": ["y","f"]
-    },
-    {
-      "nomeMateria": "Eletricidade",
-      "textoMateria": "d",
-      "variaveis": ["y","f"]
-    }
-  ]
+    "Materias": [{
+        "nomeMateria": "Cinemática",
+        "textoMateria": "Esta simulação calcula a Velocidade Final com os dados da Velocidade Inicial, Aceleração e o Tempo.\n\nA equação utilizada é Vf = Vi + (a*t). \nNa caixa abaixo insira o valor da Velocidade Inicial, Aceleração e Tempo: ",
+        "variaveis": ["Vi", "a", "t"]
+    }, {
+        "nomeMateria": "Ondas",
+        "textoMateria": "Esta simulação calcula a Velocidade da onda com os dados do comprimento de ondae da frequêcia de onda \n\nA equação utilizada é V = y * f\nNa caixa abaixo insira o valor do comprimento de onda e frequência: ",
+        "variaveis": ["y", "f"]
+    }, {
+        "nomeMateria": "Mola",
+        "textoMateria": "Esta simulação calcula a força elástica de uma mola com os dados da constante elástica da mola e de sua deformação.\n\nA equação utilizada é F = K * x\nNa caixa abaixo insira o valor do da constante elástica da mola e sua deformação: ",
+        "variaveis": ["k", "x"]
+    }, {
+        "nomeMateria": "Eletricidade",
+        "textoMateria": "Esta simulação calcula a corrente elétrica que atravessa um condutor com os dados da carga da corrente e do tempo que a corrente demorou para atravessar.\n\nA equação utilizada é i = Q * t\nNa caixa abaixo insira o valor da carga e do tempo: ",
+        "variaveis": ["Q", "t"]
+    }]
 }
